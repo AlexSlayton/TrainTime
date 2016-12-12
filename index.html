@@ -7,12 +7,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <style type="text/css">
+	body {
+		background-color: black;
+	}
 	.jumbotron {
-		background-color: orange;
+		background-color: #D6B457;
 		text-align: center;
 	}
 	#trainIcon {
-		
+
 
 	}
 	#firstBox {
@@ -29,9 +32,11 @@
 <body>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Train Time</h1>
+			<h1>Train 
+				<img src="http://www.iconsdb.com/icons/preview/black/train-5-xxl.png" height="100px">
+			Time</h1>
 			<div id="trainIcon">
-			<img src="http://www.iconsdb.com/icons/preview/black/train-5-xxl.png" height="100px">
+			
 			</div>
 		</div>
 
@@ -64,8 +69,41 @@
 	<div class="jumbotron" id="secondBox">
 		<div class="addTrain">
 		<h2>Add Train</h2>
+		<div class="input_fields_wrap">
+    	<button class="add_field_button">Add More Fields</button>
+   		 <div><input type="text" name="mytext[]"></div>
+   		 <br>
+   		 <button type="button" class="btn btn-primary">Submit</button>
+		</div>
 		</div>
 	</div>
+
+	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+
+	//not my code, found it online but trying it out
+
+		$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+    
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+        }
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+
+	</script>
 
 </body>
 </html>
